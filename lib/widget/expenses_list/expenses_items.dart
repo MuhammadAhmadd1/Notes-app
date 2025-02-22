@@ -17,8 +17,6 @@ class ExpensesItems extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 16),
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Ensures proper alignment
             children: [
               Text(
                 expense.title,
