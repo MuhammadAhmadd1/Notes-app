@@ -17,11 +17,12 @@ class _NewExpenseState extends State<NewNotes> {
   void _presentDatePicker() async {
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
+    final lastDate = DateTime(2100);
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: now,
       firstDate: firstDate,
-      lastDate: now,
+      lastDate: lastDate,
     );
     setState(() {
       _selectedDate = pickedDate;

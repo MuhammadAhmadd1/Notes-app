@@ -27,10 +27,10 @@ class _NotesState extends State<Notes> {
     });
   }
 
-  void _removeExpenses(NotesStructure expense) {
-    final expenseIndex = _registeredExpense.indexOf(expense);
+  void _removeExpenses(NotesStructure notess) {
+    final expenseIndex = _registeredExpense.indexOf(notess);
     setState(() {
-      _registeredExpense.remove(expense);
+      _registeredExpense.remove(notess);
     });
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -42,7 +42,7 @@ class _NotesState extends State<Notes> {
           onPressed: () {
             setState(
               () {
-                _registeredExpense.insert(expenseIndex, expense);
+                _registeredExpense.insert(expenseIndex, notess);
               },
             );
           },
@@ -62,7 +62,7 @@ class _NotesState extends State<Notes> {
     );
     if (_registeredExpense.isNotEmpty) {
       mainContent = NotesList(
-        expenses: _registeredExpense,
+        notes: _registeredExpense,
         onRemoveExpense: _removeExpenses,
       );
     }

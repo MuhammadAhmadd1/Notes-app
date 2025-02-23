@@ -5,30 +5,33 @@ import 'package:mynotes/widget/expenses_list/notes_card_display.dart';
 
 class NotesList extends StatelessWidget {
   const NotesList(
-      {super.key, required this.expenses, required this.onRemoveExpense});
-  final void Function(NotesStructure expense) onRemoveExpense;
-  void _selectScreen(BuildContext context) {
+      {super.key, required this.notes, required this.onRemoveExpense});
+  final void Function(NotesStructure nottes) onRemoveExpense;
+  void _selectScreen(BuildContext context, NotesStructure note) {
+
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (ctx) => NotesScreen()));
+        .push(MaterialPageRoute(builder: (ctx) => NotesScreen(note: note,)));
   }
 
-  final List<NotesStructure> expenses;
+  final List<NotesStructure> notes;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: expenses.length,
+      itemCount: notes.length,
       itemBuilder: (ctx, index) => Dismissible(
-          key: ValueKey(
-            expenses[index],
-          ),
-          onDismissed: (direction) {
-            onRemoveExpense(expenses[index]);
+        key: ValueKey(
+          notes[index],
+        ),
+        onDismissed: (direction) {
+          onRemoveExpense(notes[index]);
+        },
+        child: NotesCardDisplay(
+          expense: notes[index],
+          onCardTap: () {
+            _selectScreen(context,notes[index]);
           },
-          child: NotesCardDisplay(
-              expense: expenses[index],
-              onCardTap: () {
-                _selectScreen(context);
-              })),
+        ),
+      ),
     );
   }
 }
