@@ -4,9 +4,8 @@ import 'package:intl/intl.dart';
 final formatter = DateFormat.yMd();
 const uuid = Uuid();
 
-
-class ExpenseStructure {
-  ExpenseStructure({
+class NotesStructure {
+  NotesStructure({
     required this.title,
     required this.description,
     required this.date,

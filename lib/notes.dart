@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/widget/expenses_list/expenses_list.dart';
-import 'package:mynotes/model/expense_structure.dart';
+import 'package:mynotes/widget/expenses_list/notes_list.dart';
+import 'package:mynotes/model/notes_structure.dart';
 import 'package:mynotes/widget/expenses_list/new_notes.dart';
 
 class Notes extends StatefulWidget {
@@ -11,9 +11,7 @@ class Notes extends StatefulWidget {
 }
 
 class _NotesState extends State<Notes> {
-  final List<ExpenseStructure> _registeredExpense = [
-
-  ];
+  final List<NotesStructure> _registeredExpense = [];
 
   void _openAddexpenseOverlay() {
     showModalBottomSheet(
@@ -23,13 +21,13 @@ class _NotesState extends State<Notes> {
     );
   }
 
-  void _addExpense(ExpenseStructure expense) {
+  void _addExpense(NotesStructure expense) {
     setState(() {
       _registeredExpense.add(expense);
     });
   }
 
-  void _removeExpenses(ExpenseStructure expense) {
+  void _removeExpenses(NotesStructure expense) {
     final expenseIndex = _registeredExpense.indexOf(expense);
     setState(() {
       _registeredExpense.remove(expense);
@@ -63,7 +61,7 @@ class _NotesState extends State<Notes> {
               .copyWith(color: Theme.of(context).colorScheme.onSurface)),
     );
     if (_registeredExpense.isNotEmpty) {
-      mainContent = ExpensesList(
+      mainContent = NotesList(
         expenses: _registeredExpense,
         onRemoveExpense: _removeExpenses,
       );

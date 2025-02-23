@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/model/expense_structure.dart';
+import 'package:mynotes/model/notes_structure.dart';
 
-class ExpensesItems extends StatelessWidget {
-  const ExpensesItems(
+class NotesCardDisplay extends StatelessWidget {
+  const NotesCardDisplay(
       {super.key, required this.expense, required this.onCardTap});
-  final ExpenseStructure expense;
+  final NotesStructure expense;
   final void Function() onCardTap;
 
   @override

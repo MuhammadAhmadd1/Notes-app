@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/model/expense_structure.dart';
+import 'package:mynotes/model/notes_structure.dart';
 
 class NewNotes extends StatefulWidget {
   const NewNotes({super.key, required this.onAddExpense});
-  final void Function(ExpenseStructure expense) onAddExpense;
+  final void Function(NotesStructure expense) onAddExpense;
 
   @override
   State<NewNotes> createState() => _NewExpenseState();
@@ -62,7 +62,7 @@ class _NewExpenseState extends State<NewNotes> {
     }
 
     widget.onAddExpense(
-      ExpenseStructure(
+      NotesStructure(
         title: _titleController.text,
         description: _descriptionController.text,
         date: _selectedDate!,
