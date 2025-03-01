@@ -37,7 +37,6 @@ class NotesCardDisplay extends StatelessWidget {
                       child: Text(
                         expense.description,
                         maxLines: 1,
-                        textAlign: TextAlign.start,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
