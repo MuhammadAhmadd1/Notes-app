@@ -80,87 +80,91 @@ class _NewExpenseState extends State<NewNotes> {
 
   @override
   Widget build(BuildContext context) {
+   final keyBoardSpace = MediaQuery.of(context).viewInsets.bottom;
     return SizedBox(
-      height: double.infinity,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
-          child: Expanded(
-            child: Column(
-              children: [
-                // Title Field with Date Picker
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _titleController,
-                        maxLength: 50,
-                        textCapitalization: TextCapitalization.sentences,
-                        decoration: const InputDecoration(
-                          labelText: 'Title',
-                          labelStyle: TextStyle(color: Colors.white70),
-                        ),
-                        style: const TextStyle(color: Colors.white),
-                        cursorColor: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(width: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          formatter.format(_selectedDate!),
+     // height: double.infinity,
+      child: Expanded(
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(16, 48, 16,keyBoardSpace + 16),
+            child: Expanded(
+              child: Column(
+                children: [
+                  // Title Field with Date Picker
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _titleController,
+                          maxLength: 50,
+                          textCapitalization: TextCapitalization.sentences,
+                          decoration: const InputDecoration(
+                            labelText: 'Title',
+                            labelStyle: TextStyle(color: Colors.white70),
+                          ),
                           style: const TextStyle(color: Colors.white),
+                          cursorColor: Colors.white,
                         ),
-                        IconButton(
-                          onPressed: _presentDatePicker,
-                          icon: const Icon(Icons.calendar_month_outlined),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-            
-                // Multiline Description Field
-                TextField(
-                  controller: _descriptionController,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  minLines: 1,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: const InputDecoration(
-                    labelText: 'Description',
-                    labelStyle: TextStyle(color: Colors.white70),
+                      ),
+                      const SizedBox(width: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            formatter.format(_selectedDate!),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          IconButton(
+                            onPressed: _presentDatePicker,
+                            icon: const Icon(Icons.calendar_month_outlined),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                ),
-                const SizedBox(height: 16),
-            
-                // Buttons
-                Row(
-                  children: [
-                    const Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                  const SizedBox(height: 16),
+              
+                  // Multiline Description Field
+                  TextField(
+                    controller: _descriptionController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    minLines: 1,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: const InputDecoration(
+                      labelText: 'Description',
+                      labelStyle: TextStyle(color: Colors.white70),
                     ),
-                    ElevatedButton(
-                      onPressed: _submitExpenseData,
-                      child: const Text(
-                        'Save',
-                        style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
+                  ),
+                  const SizedBox(height: 16),
+              
+                  // Buttons
+                  Row(
+                    children: [
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      ElevatedButton(
+                        onPressed: _submitExpenseData,
+                        child: const Text(
+                          'Save',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
