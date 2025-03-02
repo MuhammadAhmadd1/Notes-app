@@ -44,6 +44,12 @@ class NotesCardDisplay extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 12),
+                    Container(
+                      width: 1,
+                      height: 16,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 12),
                     // Date
                     Align(
                       alignment: Alignment.topRight,
