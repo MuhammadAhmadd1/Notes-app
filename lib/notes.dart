@@ -68,7 +68,7 @@ class _NotesState extends State<Notes> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyNotes'),
+        title: Text('AhmadsNotes'),
         actions: [
           IconButton(
             onPressed: _openAddexpenseOverlay,
