@@ -17,7 +17,7 @@ class _NotesState extends State<Notes> {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      builder: (ctx) => NewNotes(onAddExpense: _addNote),
+      builder: (ctx) => NewNotes(onAddnote: _addNote),
     );
   }
 
