@@ -17,17 +17,17 @@ class _NotesState extends State<Notes> {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      builder: (ctx) => NewNotes(onAddExpense: _addExpense),
+      builder: (ctx) => NewNotes(onAddExpense: _addNote),
     );
   }
 
-  void _addExpense(NotesStructure expense) {
+  void _addNote(NotesStructure expense) {
     setState(() {
       _registeredExpense.add(expense);
     });
   }
 
-  void _removeExpenses(NotesStructure notess) {
+  void _removeNote(NotesStructure notess) {
     final expenseIndex = _registeredExpense.indexOf(notess);
     setState(() {
       _registeredExpense.remove(notess);
@@ -36,7 +36,7 @@ class _NotesState extends State<Notes> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: Duration(seconds: 3),
-        content: const Text('Expense Deleted!'),
+        content: const Text('Note Deleted!'),
         action: SnackBarAction(
           label: 'undo',
           onPressed: () {
@@ -63,7 +63,7 @@ class _NotesState extends State<Notes> {
     if (_registeredExpense.isNotEmpty) {
       mainContent = NotesList(
         notes: _registeredExpense,
-        onRemoveExpense: _removeExpenses,
+        onRemoveNote: _removeNote,
       );
     }
     return Scaffold(

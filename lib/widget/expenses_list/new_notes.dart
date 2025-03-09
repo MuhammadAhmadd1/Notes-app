@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mynotes/model/notes_structure.dart';
 
 class NewNotes extends StatefulWidget {
-  const NewNotes({super.key, required this.onAddExpense});
-  final void Function(NotesStructure expense) onAddExpense;
+  const NewNotes({super.key, required this.onAddnote});
+  final void Function(NotesStructure note) onAddnote;
 
   @override
-  State<NewNotes> createState() => _NewExpenseState();
+  State<NewNotes> createState() => _NewNotesState();
 }
 
-class _NewExpenseState extends State<NewNotes> {
+class _NewNotesState extends State<NewNotes> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   DateTime? _selectedDate = DateTime.now();
@@ -61,7 +61,7 @@ class _NewExpenseState extends State<NewNotes> {
       return;
     }
 
-    widget.onAddExpense(
+    widget.onAddnote(
       NotesStructure(
         title: _titleController.text,
         description: _descriptionController.text,

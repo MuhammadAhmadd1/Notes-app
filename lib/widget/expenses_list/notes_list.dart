@@ -5,8 +5,8 @@ import 'package:mynotes/widget/expenses_list/notes_card_display.dart';
 
 class NotesList extends StatelessWidget {
   const NotesList(
-      {super.key, required this.notes, required this.onRemoveExpense});
-  final void Function(NotesStructure nottes) onRemoveExpense;
+      {super.key, required this.notes, required this.onRemoveNote});
+  final void Function(NotesStructure nottes) onRemoveNote;
   void _selectScreen(BuildContext context, NotesStructure note) {
 
     Navigator.of(context)
@@ -23,7 +23,7 @@ class NotesList extends StatelessWidget {
           notes[index],
         ),
         onDismissed: (direction) {
-          onRemoveExpense(notes[index]);
+          onRemoveNote(notes[index]);
         },
         child: NotesCardDisplay(
           expense: notes[index],

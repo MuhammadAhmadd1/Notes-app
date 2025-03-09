@@ -1,0 +1,1 @@
+/home/ahmad/flutter_projects/mynotes/build/app/intermediates/cxx/RelWithDebInfo/3oz1b1mh/obj/arm64-v8a
