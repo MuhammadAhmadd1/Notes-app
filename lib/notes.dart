@@ -54,7 +54,7 @@ class _NotesState extends State<Notes> {
   @override
   Widget build(BuildContext context) {
     Widget mainContent = Center(
-      child: Text('No Expense!',
+      child: Text('No Notes!',
           style: Theme.of(context)
               .textTheme
               .bodyLarge!
@@ -68,11 +68,11 @@ class _NotesState extends State<Notes> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('AhmadsNotes'),
+        title: Text('AhmadsNotes',style: TextStyle(color: Colors.white),),
         actions: [
           IconButton(
             onPressed: _openAddexpenseOverlay,
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.notes,size: 30,color: Colors.white,),
           ),
         ],
       ),

@@ -17,6 +17,7 @@ class NotesCardDisplay extends StatelessWidget {
         highlightColor: Colors.transparent,
         borderRadius: BorderRadius.circular(16),
         child: Card(
+          elevation: 500,
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 16),
