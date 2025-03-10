@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mynotes/widget/expenses_list/notes_list.dart';
 import 'package:mynotes/model/notes_structure.dart';
-import 'package:mynotes/widget/expenses_list/new_notes.dart';
+import 'package:mynotes/screen/new_notes.dart';
 
 class Notes extends StatefulWidget {
   const Notes({super.key});
@@ -32,7 +32,7 @@ class _NotesState extends State<Notes> {
     setState(() {
       _registeredExpense.remove(notess);
     });
-    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: Duration(seconds: 3),

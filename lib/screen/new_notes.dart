@@ -171,6 +171,7 @@ class _NewNotesState extends State<NewNotes> {
                 ),
                 ElevatedButton(
                   onPressed: _submitExpenseData,
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 85, 62, 53)),
                   child: const Text(
                     'Save',
                     style: TextStyle(color: Colors.white),

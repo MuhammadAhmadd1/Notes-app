@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mynotes/model/notes_structure.dart';
 import 'package:mynotes/screen/notes_screen.dart';
-import 'package:mynotes/widget/expenses_list/notes_card_display.dart';
+import 'package:mynotes/screen/notes_card_display.dart';
 
 class NotesList extends StatelessWidget {
   const NotesList(
