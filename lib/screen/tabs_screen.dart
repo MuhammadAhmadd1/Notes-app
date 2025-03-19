@@ -4,6 +4,7 @@ import 'package:mynotes/notes.dart';
 import 'package:mynotes/widget/expenses_list/notes_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mynotes/provider/important_provider.dart';
+import 'package:mynotes/provider/notes_provider.dart';
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
@@ -14,7 +15,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectPageIndex = 0; // Tracks the currently selected tab index
-  final List<NotesStructure> _registeredExpense = [];
 
   void selectedPage(int index) {
     setState(() {
@@ -22,24 +22,17 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     });
   }
 
-  void _removeNote(NotesStructure notess) {
-    final expenseIndex = _registeredExpense.indexOf(notess);
-    setState(() {
-      _registeredExpense.remove(notess);
-    });
+  void _removeNote(NotesStructure note) {
+    ref.read(notesProvider.notifier).removeNote(note);
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: Duration(seconds: 3),
         content: const Text('Note Deleted!'),
         action: SnackBarAction(
-          label: 'undo',
+          label: 'Undo',
           onPressed: () {
-            setState(
-              () {
-                _registeredExpense.insert(expenseIndex, notess);
-              },
-            );
+            ref.read(notesProvider.notifier).addNote(note);
           },
         ),
       ),
@@ -48,11 +41,13 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final importantNotes = ref.watch(importantMealsProvider);
+
     Widget activePage = Notes();
     if (_selectPageIndex == 1) {
-      final importantNotes = ref.watch(importantMealsProvider);
       activePage = NotesList(notes: importantNotes, onRemoveNote: _removeNote);
     }
+
     return Scaffold(
       appBar: _selectPageIndex == 0
           ? null
