@@ -10,6 +10,9 @@ class NotesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final impNote = ref.watch(importantMealsProvider);
+    final isImportant = impNote.contains(note);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,7 +34,9 @@ class NotesScreen extends ConsumerWidget {
                 ),
               );
             },
-            icon: Icon(Icons.star),
+            icon: Icon(
+              isImportant ? Icons.star : Icons.star_border,
+            ),
           ),
         ],
       ),
