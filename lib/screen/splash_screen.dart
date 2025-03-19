@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mynotes/notes.dart';
+import 'package:mynotes/screen/tabs_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,8 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Navigate to HomeScreen after 5 seconds
-    Timer(Duration(seconds: 5), () {
-      Get.off(() => Notes());
+    Timer(Duration(seconds: 2), () {
+      Get.off(() => TabsScreen());
     });
   }
 

@@ -1,17 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:mynotes/model/notes_structure.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mynotes/provider/important_provider.dart';
 
-class NotesScreen extends StatelessWidget {
+class NotesScreen extends ConsumerWidget {
   const NotesScreen({super.key, required this.note});
 
   final NotesStructure note;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(note.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              final wasAdded = ref
+                  .read(importantMealsProvider.notifier)
+                  .toggleImportantNoteStatus(note);
+              ScaffoldMessenger.of(context)
+                  .clearSnackBars(); // Clear previous snackbars
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(wasAdded
+                      ? 'Marked As Favourite!'
+                      : 'UnMarked As Favourite!'),
+                  duration: Duration(seconds: 1),
+                ),
+              );
+            },
+            icon: Icon(Icons.star),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
